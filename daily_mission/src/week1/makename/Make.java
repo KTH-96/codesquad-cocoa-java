@@ -18,11 +18,6 @@ public class Make {
         System.out.print("생년 월 일을 입력해 주세요(날짜 사이사이에는 띄워주기)> ");
         String birth = br.readLine();
 
-        boolean valid = validString(birth);
-        while (!valid) {
-            getDay();
-            valid  = validString(birth);
-        }
         try {
             StringTokenizer st = new StringTokenizer(birth, " ");
             int year = Integer.parseInt(st.nextToken());
@@ -39,7 +34,7 @@ public class Make {
             return birthday;
 
         }catch (NoSuchElementException no){
-            System.out.println(no + ": 띄워쓰기 하나 더해");
+            System.out.println(no + ": 띄워쓰기 더해");
             return getDay();
         }
     }
@@ -52,13 +47,6 @@ public class Make {
         return true;
     }
 
-    public boolean validString(String birth) {
-        if (!birth.contains(" ")){
-            System.out.println("돌아가");
-            return false;
-        }
-        return true;
-    }
 
     public void getName(int[] birthday) {
         IndianName indianName = new IndianName(birthday[0], birthday[1], birthday[2]);
