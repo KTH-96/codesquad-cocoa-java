@@ -6,6 +6,6 @@
 4.[백준 2920 음계](https://www.acmicpc.net/problem/2920)   
 5.[프로그래머스 12915 문자열 내 마음대로 정렬하기](https://programmers.co.kr/learn/courses/30/lessons/12915)   
 6.[프로그래머스 12917 문자열 내림차순으로 배치하기](https://programmers.co.kr/learn/courses/30/lessons/12917)   
-7.[프로그래머스 12922 수박수박수박수박수박수?](https://programmers.co.kr/learn/courses/30/lessons/12922)   
-
-___
+7.[프로그래머스 12922 수박수박수박수박수박수?](https://programmers.co.kr/learn/courses/30/lessons/12922)
+___   
+### week2   

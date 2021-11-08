@@ -6,6 +6,7 @@ public class IndianName {
     private int month;
     private int day;
 
+
     @Override
     public String toString() {
         return "당신의 이름은 " + getYearName()
