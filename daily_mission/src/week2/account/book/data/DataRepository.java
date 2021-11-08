@@ -2,7 +2,9 @@ package week2.account.book.data;
 
 import week2.account.book.member.MemberRepository;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class DataRepository {
@@ -23,8 +25,13 @@ public class DataRepository {
         return store.get(id);
     }
 
+    public List<Data> findByAll() {
+        return new ArrayList<>(store.values());
+    }
+
     public void update(Long id, Data updateDate){
         Data findData = findById(id);
+        System.out.println("###updateDate.getDate() = "+ updateDate.getDate());
         findData.setDate(updateDate.getDate());
         findData.setReciever(updateDate.getReciever());
         findData.setIncome(updateDate.getIncome());
