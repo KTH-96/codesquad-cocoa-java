@@ -6,3 +6,4 @@
 [Mission.2 랜덤뽑기, 인디언 이름 짓기](https://velog.io/@taehyun_96/Mission2)
 ***
 2주차   
+[Mission.3 홀짝](https://velog.io/@taehyun_96/2%EC%A3%BC%EC%B0%A8-Mission1)
