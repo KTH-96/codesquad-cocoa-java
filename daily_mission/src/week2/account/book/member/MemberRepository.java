@@ -1,6 +1,8 @@
 package week2.account.book.member;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class MemberRepository {
@@ -9,6 +11,7 @@ public class MemberRepository {
     public static MemberRepository getInstance() {
         return instance;
     }
+
     private static final Map<Long, Member> store = new HashMap<>();
     private static long sequence = 0L;
 
@@ -17,7 +20,12 @@ public class MemberRepository {
         store.put(sequence, member);
         return member;
     }
+
     public Member findById(Long id){
         return store.get(id);
+    }
+
+    public List<Member> findAllMember() {
+        return new ArrayList<>(store.values());
     }
 }

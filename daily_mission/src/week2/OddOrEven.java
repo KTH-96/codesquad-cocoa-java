@@ -18,7 +18,7 @@ public class OddOrEven {
         Random random = new Random();
         while (playerMoney != 0) {
             System.out.print("배팅하세요 >");
-            int batMoney = sc.nextInt();
+            int batMoney = sc.nextInt();//
 
             int oddOrEven = random.nextInt(20);
             System.out.println(oddOrEven);
@@ -56,14 +56,14 @@ public class OddOrEven {
                     stage = 1;
                     break;
                 case 2:
-                    return;
+                    System.exit(0);
             }
         } else if (computerMoney <= 0 ){
             System.out.print("승리하셨습니다 다음게임~ >");
             stage++;
             if (stage > 8){
                 System.out.println("완전히 승리하셨습니다");
-                return;
+                System.exit(0);
             }
             getComputerMoney(playerMoney, stage);
         }

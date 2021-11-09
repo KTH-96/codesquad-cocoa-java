@@ -37,4 +37,7 @@ public class DataRepository {
         findData.setIncome(updateDate.getIncome());
         findData.setOutput(updateDate.getOutput());
     }
+    public void remove(Long id){
+        store.remove(id);
+    }
 }
