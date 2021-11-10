@@ -1,8 +1,8 @@
 package week2.account.book.info;
 
 public class User {
-    String userName;
-    String password;
+    private String userName;
+    private String password;
 
     public User(String userName, String password) {
         this.userName = userName;

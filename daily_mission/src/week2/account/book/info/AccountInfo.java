@@ -6,46 +6,32 @@ import java.util.List;
 import java.util.Map;
 
 public class AccountInfo {
-    String date;
-    String who;
-    int income;
-    int outcome;
+
+
+    private long id;
+    private String date;
+    private String who;
+    private int income;
+    private int outcome;
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
 
     public String getDate() {
         return date;
     }
 
-    static Long id = 0L;
-    static int money = 0;
-    Map<Long, AccountInfo> store = new HashMap<>();
-    public AccountInfo save(AccountInfo accountInfo) {
-        id++;
-        getMoney();
-        store.put(id, accountInfo);
-        return accountInfo;
-    }
-    public int getMoney(){
-        money += income - outcome;
-        return money;
-    }
 
-    public void getReturnMoney() {
-        money -= income + outcome;
-    }
 
-    public List<AccountInfo> getList() {
-        System.out.println("리스트");
-        return new ArrayList<>(store.values());
-    }
 
-    public void removeInfo(Long id) {
-        store.remove(id);
-    }
 
-    public void updateIndo(Long id , AccountInfo accountInfo) {
-        removeInfo(id);
-        store.put(id, accountInfo);
-    }
+
+
 
     public AccountInfo(String date, String who, int income, int outcome) {
         this.date = date;
