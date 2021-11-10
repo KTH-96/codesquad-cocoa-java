@@ -11,14 +11,26 @@ public class AccountInfo {
     int income;
     int outcome;
 
+    public String getDate() {
+        return date;
+    }
+
     Long id = 0L;
     int money = 0;
     Map<Long, AccountInfo> store = new HashMap<>();
     public AccountInfo save(AccountInfo accountInfo) {
         id++;
-        money = income + outcome;
+        getMoney();
         store.put(id, accountInfo);
         return accountInfo;
+    }
+    public int getMoney(){
+        money += income + outcome;
+        return money;
+    }
+
+    public void getReturnMoney() {
+        money -= income + outcome;
     }
 
     public List<AccountInfo> getList() {

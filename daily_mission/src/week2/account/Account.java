@@ -49,10 +49,17 @@ public class Account {
     }
     //todo:해당 월의 지출내역 잔액필요
     private void getMonthAccountInfo() {
+        System.out.println("=================");
+        System.out.println("월을 입력해주세요 > ");
+        String month = sc.next();
+        accountInfo.getList().stream()
+                .filter(l -> l.getDate().startsWith(month))
+                .forEach(System.out::println);
+        System.out.println(accountInfo.getMoney());
     }
 
-    //todo:특정 순번 데이터 업데이트
     private void updateAccountInfo() {
+        accountInfo.getReturnMoney();
         System.out.println("=================");
         System.out.print("수정할 정보에 순번을 입력해주세요 > ");
         Long id = sc.nextLong();
@@ -69,7 +76,6 @@ public class Account {
         getMenu();
     }
 
-    //todo:특정 순번 데이터 삭제
     private void removeAccountInfo() {
         System.out.println("=================");
         System.out.print("삭제할 정보에 순번을 입력해주세요 > ");
@@ -77,7 +83,7 @@ public class Account {
         accountInfo.removeInfo(id);
         getMenu();
     }
-    //TODO:들어있는 데이터 확인
+
     private void getAccountInfoList() {
         List<AccountInfo> list = accountInfo.getList();
         for (AccountInfo info : list) {
@@ -88,7 +94,7 @@ public class Account {
         getMenu();
     }
 
-    //TODO:가계부 정보 저장
+
     public void getAccountInfoRegistration() {
         System.out.println("=================");
         System.out.println("가계부 데이터 입력");
@@ -103,7 +109,7 @@ public class Account {
         getMenu();
     }
 
-    //TODO:화면에 출력
+
     public void getAccount() {
         System.out.println("=================");
         System.out.println(accountInfo);
