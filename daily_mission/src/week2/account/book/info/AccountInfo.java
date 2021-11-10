@@ -25,7 +25,7 @@ public class AccountInfo {
         return accountInfo;
     }
     public int getMoney(){
-        money += income + outcome;
+        money += income - outcome;
         return money;
     }
 

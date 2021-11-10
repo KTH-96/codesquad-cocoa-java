@@ -50,12 +50,13 @@ public class Account {
     //todo:해당 월의 지출내역 잔액필요
     private void getMonthAccountInfo() {
         System.out.println("=================");
-        System.out.println("월을 입력해주세요 > ");
+        System.out.print("월을 입력해주세요 > ");
         String month = sc.next();
         accountInfo.getList().stream()
                 .filter(l -> l.getDate().startsWith(month))
                 .forEach(System.out::println);
-        System.out.println(accountInfo.getMoney());
+        System.out.println("잔액 = " + accountInfo.getMoney());
+
     }
 
     private void updateAccountInfo() {
