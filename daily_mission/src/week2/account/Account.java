@@ -11,8 +11,6 @@ public class Account {
     private User user;
     private AccountInfo accountInfo;
 
-
-    //TODO:유저 저장
     public void getUserRegistration() {
         System.out.println("유저정보 등록");
         System.out.print("아이디와 비밀번호 입력 > ");
@@ -27,6 +25,7 @@ public class Account {
         System.out.println("3. 데이터 삭제");
         System.out.println("4. 데이터 수정");
         System.out.println("5. 월별 출력");
+        System.out.println("6. 종료");
         System.out.print("번호 입력 > ");
         int num = sc.nextInt();
         switch (num){
@@ -44,10 +43,13 @@ public class Account {
                 break;
             case 5:
                 getMonthAccountInfo();
+                break;
+            case 6:
                 System.exit(0);
+
         }
     }
-    //todo:해당 월의 지출내역 잔액필요
+
     private void getMonthAccountInfo() {
         System.out.println("=================");
         System.out.print("월을 입력해주세요 > ");
@@ -56,7 +58,7 @@ public class Account {
                 .filter(l -> l.getDate().startsWith(month))
                 .forEach(System.out::println);
         System.out.println("잔액 = " + accountInfo.getMoney());
-
+        getMenu();
     }
 
     private void updateAccountInfo() {
@@ -82,6 +84,7 @@ public class Account {
         System.out.print("삭제할 정보에 순번을 입력해주세요 > ");
         Long id = sc.nextLong();
         accountInfo.removeInfo(id);
+        accountInfo.getReturnMoney();
         getMenu();
     }
 
@@ -90,7 +93,6 @@ public class Account {
         for (AccountInfo info : list) {
             System.out.println("=================");
             System.out.println(info);
-
         }
         getMenu();
     }

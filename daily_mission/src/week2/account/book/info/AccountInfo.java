@@ -15,8 +15,8 @@ public class AccountInfo {
         return date;
     }
 
-    Long id = 0L;
-    int money = 0;
+    static Long id = 0L;
+    static int money = 0;
     Map<Long, AccountInfo> store = new HashMap<>();
     public AccountInfo save(AccountInfo accountInfo) {
         id++;
