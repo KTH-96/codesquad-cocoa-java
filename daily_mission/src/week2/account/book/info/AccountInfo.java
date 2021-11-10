@@ -1,6 +1,8 @@
 package week2.account.book.info;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class AccountInfo {
@@ -15,8 +17,22 @@ public class AccountInfo {
     public AccountInfo save(AccountInfo accountInfo) {
         id++;
         money = income + outcome;
-        store.put(id, this);
-        return this;
+        store.put(id, accountInfo);
+        return accountInfo;
+    }
+
+    public List<AccountInfo> getList() {
+        System.out.println("리스트");
+        return new ArrayList<>(store.values());
+    }
+
+    public void removeInfo(Long id) {
+        store.remove(id);
+    }
+
+    public void updateIndo(Long id , AccountInfo accountInfo) {
+        removeInfo(id);
+        store.put(id, accountInfo);
     }
 
     public AccountInfo(String date, String who, int income, int outcome) {
@@ -28,12 +44,11 @@ public class AccountInfo {
 
     @Override
     public String toString() {
-        return "AccountInfo{" +
-                "id=" + id +
-                ", date='" + date + '\'' +
-                ", who='" + who + '\'' +
-                ", income=" + income +
-                ", outcome=" + outcome +
-                '}';
+        return "정보 " +
+                " 순번=" + id + '\'' +
+                " 날짜 = '" + date + '\'' +
+                ", 적요 = '" + who + '\'' +
+                ", 수입 = " + income +
+                ", 지출=" + outcome ;
     }
 }

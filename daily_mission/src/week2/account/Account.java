@@ -3,6 +3,7 @@ package week2.account;
 import week2.account.book.info.AccountInfo;
 import week2.account.book.info.User;
 
+import java.util.List;
 import java.util.Scanner;
 
 public class Account {
@@ -20,6 +21,7 @@ public class Account {
         user = new User(userName, password);
     }
     public void getMenu() {
+        System.out.println("=================");
         System.out.println("1. 데이터 입력");
         System.out.println("2. 데이터 확인");
         System.out.println("3. 데이터 삭제");
@@ -30,14 +32,19 @@ public class Account {
         switch (num){
             case 1:
                 getAccountInfoRegistration();
+                break;
             case 2:
                 getAccountInfoList();
+                break;
             case 3:
                 removeAccountInfo();
+                break;
             case 4:
                 updateAccountInfo();
+                break;
             case 5:
                 getMonthAccountInfo();
+                System.exit(0);
         }
     }
     //todo:해당 월의 지출내역 잔액필요
@@ -46,32 +53,59 @@ public class Account {
 
     //todo:특정 순번 데이터 업데이트
     private void updateAccountInfo() {
+        System.out.println("=================");
+        System.out.print("수정할 정보에 순번을 입력해주세요 > ");
+        Long id = sc.nextLong();
+        System.out.println(accountInfo);
+        System.out.println("업데이트 정보입력 >");
+        System.out.print("날짜(월 일) 주체 수입 지출 > ");
+        String date = sc.next();
+        String who = sc.next();
+        int income = sc.nextInt();
+        int outcome = sc.nextInt();
+        accountInfo = new AccountInfo(date, who, income, outcome);
+        accountInfo.updateIndo(id, accountInfo);
+        System.out.println(accountInfo);
+        getMenu();
     }
 
     //todo:특정 순번 데이터 삭제
     private void removeAccountInfo() {
-
+        System.out.println("=================");
+        System.out.print("삭제할 정보에 순번을 입력해주세요 > ");
+        Long id = sc.nextLong();
+        accountInfo.removeInfo(id);
+        getMenu();
     }
     //TODO:들어있는 데이터 확인
     private void getAccountInfoList() {
+        List<AccountInfo> list = accountInfo.getList();
+        for (AccountInfo info : list) {
+            System.out.println("=================");
+            System.out.println(info);
 
+        }
+        getMenu();
     }
 
     //TODO:가계부 정보 저장
     public void getAccountInfoRegistration() {
+        System.out.println("=================");
         System.out.println("가계부 데이터 입력");
         System.out.print("날짜(월 일) 주체 수입 지출 > ");
         String date = sc.next();
         String who = sc.next();
         int income = sc.nextInt();
         int outcome = sc.nextInt();
-        accountInfo.save(new AccountInfo(date, who, income, outcome));
+        accountInfo = new AccountInfo(date, who, income, outcome);
+        accountInfo.save(accountInfo);
         System.out.println(accountInfo);
-
+        getMenu();
     }
 
     //TODO:화면에 출력
     public void getAccount() {
+        System.out.println("=================");
         System.out.println(accountInfo);
     }
 
