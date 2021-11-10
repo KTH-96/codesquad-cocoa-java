@@ -19,6 +19,43 @@ public class Account {
         String password = sc.next();
         user = new User(userName, password);
     }
+    public void getMenu() {
+        System.out.println("1. 데이터 입력");
+        System.out.println("2. 데이터 확인");
+        System.out.println("3. 데이터 삭제");
+        System.out.println("4. 데이터 수정");
+        System.out.println("5. 월별 출력");
+        System.out.print("번호 입력 > ");
+        int num = sc.nextInt();
+        switch (num){
+            case 1:
+                getAccountInfoRegistration();
+            case 2:
+                getAccountInfoList();
+            case 3:
+                removeAccountInfo();
+            case 4:
+                updateAccountInfo();
+            case 5:
+                getMonthAccountInfo();
+        }
+    }
+    //todo:해당 월의 지출내역 잔액필요
+    private void getMonthAccountInfo() {
+    }
+
+    //todo:특정 순번 데이터 업데이트
+    private void updateAccountInfo() {
+    }
+
+    //todo:특정 순번 데이터 삭제
+    private void removeAccountInfo() {
+
+    }
+    //TODO:들어있는 데이터 확인
+    private void getAccountInfoList() {
+
+    }
 
     //TODO:가계부 정보 저장
     public void getAccountInfoRegistration() {
@@ -28,11 +65,15 @@ public class Account {
         String who = sc.next();
         int income = sc.nextInt();
         int outcome = sc.nextInt();
-        accountInfo = new AccountInfo(date, who, income, outcome);
+        accountInfo.save(new AccountInfo(date, who, income, outcome));
+        System.out.println(accountInfo);
+
     }
 
     //TODO:화면에 출력
     public void getAccount() {
         System.out.println(accountInfo);
     }
+
+
 }
