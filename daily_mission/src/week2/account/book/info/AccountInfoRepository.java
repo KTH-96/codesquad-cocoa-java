@@ -11,14 +11,9 @@ public class AccountInfoRepository {
 
     public void save(AccountInfo accountInfo) {
         accountInfo.setId(++sequence);
-        System.out.println("@@@@@@@"+sequence);
-        System.out.println("========" + store.size());
-        for (long i = 0; i < store.size(); i++) {
-            System.out.println("*******" + store.get(i));// get(i) NULL
-        }
         store.put(accountInfo.getId(), accountInfo);
-
     }
+
     public List<AccountInfo> getList() {
         System.out.println("리스트");
         ArrayList<AccountInfo> accountInfos = new ArrayList<>(store.values());
