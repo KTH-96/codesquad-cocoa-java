@@ -5,6 +5,7 @@ import week2.account.book.info.AccountInfoRepository;
 import week2.account.book.info.User;
 import week2.account.book.info.UserRepository;
 
+import java.util.InputMismatchException;
 import java.util.List;
 import java.util.Scanner;
 import java.util.stream.Collectors;
@@ -113,6 +114,7 @@ public class Account {
         System.out.println("=================");
         System.out.println("가계부 데이터 입력");
         System.out.print("날짜(월 일) 주체 수입 지출 > ");
+
         date = sc.next();
         who = sc.next();
         income = sc.nextInt();
