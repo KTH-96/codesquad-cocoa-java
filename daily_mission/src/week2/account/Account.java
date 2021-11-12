@@ -3,6 +3,7 @@ package week2.account;
 import week2.account.book.info.AccountInfo;
 import week2.account.book.info.AccountInfoRepository;
 import week2.account.book.info.User;
+import week2.account.book.info.UserRepository;
 
 import java.util.List;
 import java.util.Scanner;
@@ -14,6 +15,7 @@ public class Account {
     private User user;
     private AccountInfo accountInfo;
     private final AccountInfoRepository accountInfoRepository = new AccountInfoRepository();
+    private final UserRepository userRepository = new UserRepository();
     private String date;
     private String who;
     private int income;
@@ -25,6 +27,7 @@ public class Account {
         String userName = sc.next();
         String password = sc.next();
         user = new User(userName, password);
+        userRepository.save(user);
     }
     public void getMenu() {
         System.out.println("=================");
@@ -66,13 +69,11 @@ public class Account {
                 .filter(l -> l.getDate().startsWith(month))
                 .forEach(System.out::println);
 
-
 //        System.out.println("잔액 = " + accountInfo.getMoney());
         getMenu();
     }
 
     private void updateAccountInfo() {
-
         System.out.println("=================");
         System.out.print("수정할 정보에 순번을 입력해주세요 > ");
         long id = sc.nextLong();
