@@ -9,3 +9,4 @@
 7.[프로그래머스 12922 수박수박수박수박수박수?](https://programmers.co.kr/learn/courses/30/lessons/12922)
 ___   
 ### week2   
+1.[leetcode](https://leetcode.com/explore/learn/card/array-and-string/201/introduction-to-array/1144/)
