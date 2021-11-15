@@ -16,8 +16,9 @@ public class Shell {
     StringTokenizer st;
     CommandFile showFile = new CommandFile();
     CommandDirectory goDirectory = new CommandDirectory();
-    public boolean start() throws IOException {
-        System.out.print("Yan Java Shell>");
+
+    public boolean start(Optional<String> name) throws IOException {
+        System.out.print("Yan Java Shell"+name+">");
         st = new StringTokenizer(br.readLine(), " ");
         String mainCommand = st.nextToken();
         Optional<String> fileOrDirectoryName;
@@ -26,6 +27,7 @@ public class Shell {
         }catch (NoSuchElementException e){
             fileOrDirectoryName = null;
         }
+        br.close();
 
         switch (mainCommand){
             case "ls":
@@ -33,6 +35,7 @@ public class Shell {
                 return true;
             case "cd":
                 goDirectory.goToDirectory(fileOrDirectoryName);
+                start(fileOrDirectoryName);
                 return true;
             case "mkdir":
                 goDirectory.createdDirectory(fileOrDirectoryName);
@@ -50,10 +53,8 @@ public class Shell {
                 showFile.findFileLocation(fileOrDirectoryName);
                 return true;
             case ":wq":
-                br.close();
                 return false;
         }
-        br.close();
         return true;
     }
 }

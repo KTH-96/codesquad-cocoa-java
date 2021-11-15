@@ -12,7 +12,7 @@ public class Main {
         Shell shelling = new Shell();
         while (loop) {
             try {
-                loop = shelling.start();
+                loop = shelling.start(null);
             } catch (IOException e) {
                 e.printStackTrace();
             }
