@@ -1,27 +1,24 @@
 package week3.shell;
 
-import week3.shell.runcommand.CommandDirectory;
-import week3.shell.runcommand.CommandFile;
-
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.NoSuchElementException;
-import java.util.Optional;
 import java.util.StringTokenizer;
 
 public class Shell {
 
     StringTokenizer st;
-    CommandFile showFile = new CommandFile();
-    CommandDirectory goDirectory = new CommandDirectory();
+//    CommandFile showFile = new CommandFile();
+//    CommandDirectory goDirectory = new CommandDirectory();
+    Command command = new Command();
 
     public boolean start(String name) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        if(name == null) {
+        if (name == null || name.equals("/")) {
             name = "";
         }
-        System.out.print("Yan Java Shell"+name+">");
+        System.out.print("Yan Java Shell "+name+">");
         st = new StringTokenizer(br.readLine(), " ");
         String mainCommand = st.nextToken();
         String fileOrDirectoryName;
@@ -33,25 +30,26 @@ public class Shell {
 
         switch (mainCommand){
             case "ls":
-                goDirectory.listOfDirectory();
+                command.listOfDirectory();
                 return true;
             case "cd":
-                goDirectory.goToDirectory(fileOrDirectoryName);
+                String move = command.goToDirectory(fileOrDirectoryName);
+                start(move);
                 return true;
             case "mkdir":
-                goDirectory.createdDirectory(fileOrDirectoryName);
+                command.createdDirectory(fileOrDirectoryName);
                 return true;
             case "rm-r"://todo: rm -r 형식으로 하고싶다.
-                goDirectory.removedDirectory(fileOrDirectoryName);
+                command.removedDirectory(fileOrDirectoryName);
                 return true;
             case "nano":
-                showFile.createdWriteFile(fileOrDirectoryName);
+                command.createdWriteFile(fileOrDirectoryName);
                 return true;
             case "rm":
-                showFile.removedFile(fileOrDirectoryName);
+                command.removedFile(fileOrDirectoryName);
                 return true;
             case "cat":
-                showFile.findFileLocation(fileOrDirectoryName);
+                command.findFileLocation(fileOrDirectoryName);
                 return true;
             case "help":
                 showCommand();

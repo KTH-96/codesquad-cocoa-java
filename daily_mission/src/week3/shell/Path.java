@@ -1,4 +1,4 @@
-package week3.shell.runcommand;
+package week3.shell;
 
 public class Path {
     private String path;
