@@ -18,6 +18,9 @@ public class Shell {
     CommandDirectory goDirectory = new CommandDirectory();
 
     public boolean start(Optional<String> name) throws IOException {
+        if(name == null) {
+            name = Optional.of("");
+        }
         System.out.print("Yan Java Shell"+name+">");
         st = new StringTokenizer(br.readLine(), " ");
         String mainCommand = st.nextToken();
@@ -35,7 +38,6 @@ public class Shell {
                 return true;
             case "cd":
                 goDirectory.goToDirectory(fileOrDirectoryName);
-                start(fileOrDirectoryName);
                 return true;
             case "mkdir":
                 goDirectory.createdDirectory(fileOrDirectoryName);
@@ -44,7 +46,7 @@ public class Shell {
                 goDirectory.removedDirectory(fileOrDirectoryName);
                 return true;
             case "nano":
-                showFile.createdAndWriteFile(fileOrDirectoryName);
+                showFile.createdWriteFile(fileOrDirectoryName);
                 return true;
             case "rm":
                 showFile.removedFile(fileOrDirectoryName);

@@ -4,12 +4,13 @@ import java.io.File;
 import java.util.Optional;
 
 public class CommandDirectory {
-    private static String path = "/Users/taehyun/IdeaProjects/codesquad-cocoa-java/daily_mission/src/week3/shell/etc";
     File folder;
+    Path path = new Path("/Users/taehyun/IdeaProjects/codesquad-cocoa-java/daily_mission/src/week3/shell/etc");
+
 
     //todo:폴더 안 파일들 보여주기
     public void listOfDirectory() {
-        folder = new File(path);
+        folder = new File(path.getPath());
         try {
             if (folder.exists()) {
                 File[] files = folder.listFiles();
@@ -22,16 +23,16 @@ public class CommandDirectory {
         }
     }
     //todo:폴더로 이동
-    public String goToDirectory(Optional<String> fileOrDirectoryName) {
-        path = path + fileOrDirectoryName;
+    public void goToDirectory(Optional<String> fileOrDirectoryName) {
+        path.setPath(path.getPath() + fileOrDirectoryName);
         if (fileOrDirectoryName.equals("/")){
-            path = "/Users/taehyun/IdeaProjects/codesquad-cocoa-java/daily_mission/src/week3/shell/etc";
+            path.setPath("/Users/taehyun/IdeaProjects/codesquad-cocoa-java/daily_mission/src/week3/shell/etc");
         }
-        return path;
     }
     //todo:폴더 만들기
     public void createdDirectory(Optional<String> fileOrDirectoryName) {
-        folder = new File(path + fileOrDirectoryName);
+        path.setPath(path.getPath() + fileOrDirectoryName);
+        folder = new File(path.getPath());
         if (!folder.exists()){
             try {
                 folder.mkdir();
@@ -42,7 +43,8 @@ public class CommandDirectory {
     }
     //todo:폴더 삭제(삭제시 안에있는 파일 다삭제)
     public void removedDirectory(Optional<String> fileOrDirectoryName) {
-        folder = new File(path + fileOrDirectoryName);
+        path.setPath(path.getPath() + fileOrDirectoryName);
+        folder = new File(path.getPath());
         try {
             if (folder.exists()) {
                 File[] files = folder.listFiles();
