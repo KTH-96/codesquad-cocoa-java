@@ -9,8 +9,6 @@ import java.util.StringTokenizer;
 public class Shell {
 
     StringTokenizer st;
-//    CommandFile showFile = new CommandFile();
-//    CommandDirectory goDirectory = new CommandDirectory();
     Command command = new Command();
 
     public boolean start(String name) throws IOException {
@@ -31,29 +29,29 @@ public class Shell {
         switch (mainCommand){
             case "ls":
                 command.listOfDirectory();
-                return true;
+                break;
             case "cd":
                 String move = command.goToDirectory(fileOrDirectoryName);
                 start(move);
-                return true;
+                break;
             case "mkdir":
                 command.createdDirectory(fileOrDirectoryName);
-                return true;
+                break;
             case "rm-r"://todo: rm -r 형식으로 하고싶다.
                 command.removedDirectory(fileOrDirectoryName);
-                return true;
+                break;
             case "nano":
                 command.createdWriteFile(fileOrDirectoryName);
-                return true;
+                break;
             case "rm":
                 command.removedFile(fileOrDirectoryName);
-                return true;
+                break;
             case "cat":
                 command.findFileLocation(fileOrDirectoryName);
-                return true;
+                break;
             case "help":
                 showCommand();
-                return true;
+                break;
             case ":wq":
                 return false;
         }
@@ -61,6 +59,14 @@ public class Shell {
     }
     //todo: 명령어 정리해서 보여주기
     private void showCommand() {
-        System.out.println("명령어를 보여줍니다.");
+        System.out.println(":wq = 셸 종료");
+        System.out.println("ls = 폴더안 파일들 보여줌");
+        System.out.println("cd = 이동");
+        System.out.println("mkdir = 폴더 생성");
+        System.out.println("rm-r = 폴더 제거");
+        System.out.println("nano = 파일 생성");
+        System.out.println("rm = 파일 제거");
+        System.out.println("cat = 파일 보기");
+        System.out.println("help = 명령어 보여주기");
     }
 }
