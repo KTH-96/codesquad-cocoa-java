@@ -23,6 +23,14 @@ public class Shell {
                 goDirectory.createdDirectory();
             case "rm -r":
                 goDirectory.removedDirectory();
+            case "nano":
+                showFile.createdAndWriteFile();
+            case "rm":
+                showFile.removedFile();
+            case "cat":
+                showFile.findFileLocation();
+            case ":wq":
+                return false;
         }
         return true;
     }
