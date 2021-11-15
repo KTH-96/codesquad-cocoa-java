@@ -3,7 +3,6 @@ package week3.shell;
 import week3.shell.runcommand.CommandDirectory;
 import week3.shell.runcommand.CommandFile;
 
-import javax.swing.text.Document;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -12,25 +11,25 @@ import java.util.Optional;
 import java.util.StringTokenizer;
 
 public class Shell {
-    BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+
     StringTokenizer st;
     CommandFile showFile = new CommandFile();
     CommandDirectory goDirectory = new CommandDirectory();
 
-    public boolean start(Optional<String> name) throws IOException {
+    public boolean start(String name) throws IOException {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         if(name == null) {
-            name = Optional.of("");
+            name = "";
         }
         System.out.print("Yan Java Shell"+name+">");
         st = new StringTokenizer(br.readLine(), " ");
         String mainCommand = st.nextToken();
-        Optional<String> fileOrDirectoryName;
+        String fileOrDirectoryName;
         try {
-            fileOrDirectoryName = Optional.ofNullable(st.nextToken());
+            fileOrDirectoryName = st.nextToken();
         }catch (NoSuchElementException e){
             fileOrDirectoryName = null;
         }
-        br.close();
 
         switch (mainCommand){
             case "ls":
@@ -54,9 +53,16 @@ public class Shell {
             case "cat":
                 showFile.findFileLocation(fileOrDirectoryName);
                 return true;
+            case "help":
+                showCommand();
+                return true;
             case ":wq":
                 return false;
         }
         return true;
+    }
+    //todo: 명령어 정리해서 보여주기
+    private void showCommand() {
+        System.out.println("명령어를 보여줍니다.");
     }
 }

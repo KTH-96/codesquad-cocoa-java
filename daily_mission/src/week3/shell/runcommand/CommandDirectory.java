@@ -23,14 +23,14 @@ public class CommandDirectory {
         }
     }
     //todo:폴더로 이동
-    public void goToDirectory(Optional<String> fileOrDirectoryName) {
+    public void goToDirectory(String fileOrDirectoryName) {
         path.setPath(path.getPath() + fileOrDirectoryName);
         if (fileOrDirectoryName.equals("/")){
             path.setPath("/Users/taehyun/IdeaProjects/codesquad-cocoa-java/daily_mission/src/week3/shell/etc");
         }
     }
     //todo:폴더 만들기
-    public void createdDirectory(Optional<String> fileOrDirectoryName) {
+    public void createdDirectory(String fileOrDirectoryName) {
         path.setPath(path.getPath() + fileOrDirectoryName);
         folder = new File(path.getPath());
         if (!folder.exists()){
@@ -42,7 +42,7 @@ public class CommandDirectory {
         }
     }
     //todo:폴더 삭제(삭제시 안에있는 파일 다삭제)
-    public void removedDirectory(Optional<String> fileOrDirectoryName) {
+    public void removedDirectory(String fileOrDirectoryName) {
         path.setPath(path.getPath() + fileOrDirectoryName);
         folder = new File(path.getPath());
         try {
@@ -53,7 +53,7 @@ public class CommandDirectory {
                         file.delete();
                         continue;
                     }else {
-                        removedDirectory(Optional.of(file.getName()));
+                        removedDirectory(file.getName());
                     }
                     file.delete();
                 }

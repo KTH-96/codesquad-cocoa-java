@@ -10,7 +10,7 @@ public class CommandFile {
     Path path;
     File file;
     //todo:파일 생성
-    public void createdWriteFile(Optional<String> fileOrDirectoryName) {
+    public void createdWriteFile(String fileOrDirectoryName) {
         file = new File(path.getPath() + fileOrDirectoryName);
         try {
             OutputStream fileOutputStream = new FileOutputStream(file, true);
@@ -20,12 +20,12 @@ public class CommandFile {
 
     }
     //todo:파일 제거
-    public void removedFile(Optional<String> fileOrDirectoryName) {
+    public void removedFile(String fileOrDirectoryName) {
         file = new File(path.getPath() + fileOrDirectoryName);
         file.delete();
     }
     //todo:파일 위치 보여주기
-    public void findFileLocation(Optional<String> fileOrDirectoryName) {
+    public void findFileLocation(String fileOrDirectoryName) {
         System.out.println(path.getPath()+fileOrDirectoryName);
     }
 }
