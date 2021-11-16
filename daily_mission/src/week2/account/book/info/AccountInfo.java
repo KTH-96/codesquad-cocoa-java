@@ -14,6 +14,8 @@ public class AccountInfo {
     private int income;
     private int outcome;
 
+    private int money;
+
     public long getId() {
         return id;
     }
@@ -26,12 +28,13 @@ public class AccountInfo {
         return date;
     }
 
+    public int getMoney() {
+        return money;
+    }
 
-
-
-
-
-
+    public void setMoney(int money) {
+        this.money = money;
+    }
 
     public AccountInfo(String date, String who, int income, int outcome) {
         this.date = date;

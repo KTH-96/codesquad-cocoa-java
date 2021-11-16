@@ -9,6 +9,8 @@ public class AccountInfoRepository {
     private static final Map<Long, AccountInfo> store = new HashMap<>();
     private static long sequence = 0L;
 
+    private static final List<Integer> moneys = new ArrayList<>();
+
     public AccountInfo save(AccountInfo accountInfo) {
         accountInfo.setId(++sequence);
         store.put(accountInfo.getId(), accountInfo);
