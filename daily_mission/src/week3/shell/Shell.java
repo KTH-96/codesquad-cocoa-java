@@ -49,6 +49,8 @@ public class Shell {
             case "cat":
                 command.findFileLocation(fileOrDirectoryName);
                 break;
+            case "cp":
+                command.copyFile(fileOrDirectoryName);
             case "help":
                 showCommand();
                 break;

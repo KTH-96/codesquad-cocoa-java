@@ -1,9 +1,6 @@
 package week3.shell;
 
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.OutputStream;
+import java.io.*;
 
 public class Command {
     File file;
@@ -72,10 +69,21 @@ public class Command {
         file = new File(path.getPath() + "/" + fileOrDirectoryName);
         System.out.println("========="+file.getPath());
         try {
-            OutputStream fileOutputStream = new FileOutputStream(file, false);
-        } catch (FileNotFoundException e) {
+            if (!file.exists()) {
+                OutputStream fileOutputStream = new FileOutputStream(file, false);
+            }else {
+                OutputStream fileOutputStream = new FileOutputStream(file, true);
+            }
+            BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+            BufferedWriter bw = new BufferedWriter(new FileWriter(file));
+            System.out.print("파일 내용작성 해주세요");
+            bw.write(br.readLine());
+            bw.close();
+            br.close();
+        } catch (Exception e) {
             e.printStackTrace();
         }
+
 
     }
     //todo:파일 제거
@@ -86,5 +94,9 @@ public class Command {
     //todo:파일 위치 보여주기
     public void findFileLocation(String fileOrDirectoryName) {
         System.out.println(path.getPath() + "/" + fileOrDirectoryName);
+    }
+    //todo:파일 복사하기
+    public void copyFile(String fileOrDirectoryName) {
+
     }
 }
