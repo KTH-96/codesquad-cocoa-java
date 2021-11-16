@@ -31,11 +31,10 @@ public class Shell {
                 command.listOfDirectory();
                 break;
             case "cd":
-                String move = command.goToDirectory(fileOrDirectoryName);
-                start(move);
+                moveLocation(fileOrDirectoryName);
                 break;
             case "mkdir":
-                command.createdDirectory(fileOrDirectoryName);
+                createFolder(fileOrDirectoryName);
                 break;
             case "rm-r"://todo: rm -r 형식으로 하고싶다.
                 command.removedDirectory(fileOrDirectoryName);
@@ -51,6 +50,7 @@ public class Shell {
                 break;
             case "cp":
                 command.copyFile(fileOrDirectoryName);
+                break;
             case "help":
                 showCommand();
                 break;
@@ -59,6 +59,19 @@ public class Shell {
         }
         return true;
     }
+
+    private void createFolder(String fileOrDirectoryName) throws IOException {
+        String move;
+        move = command.createdDirectory(fileOrDirectoryName);
+        start(move);
+    }
+
+    private void moveLocation(String fileOrDirectoryName) throws IOException {
+        String move;
+        move = command.goToDirectory(fileOrDirectoryName);
+        start(move);
+    }
+
     //todo: 명령어 정리해서 보여주기
     private void showCommand() {
         System.out.println(":wq = 셸 종료");
