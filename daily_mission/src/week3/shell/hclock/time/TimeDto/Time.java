@@ -1,4 +1,4 @@
-package week3.shell.hclock.time;
+package week3.shell.hclock.time.TimeDto;
 
 public class Time {
     private int hour;

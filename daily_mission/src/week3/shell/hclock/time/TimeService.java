@@ -1,9 +1,11 @@
 package week3.shell.hclock.time;
 
+import week3.shell.hclock.time.TimeDto.Hour;
+import week3.shell.hclock.time.TimeDto.Min;
+import week3.shell.hclock.time.TimeDto.Time;
+
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
-import java.util.Arrays;
-import java.util.HashMap;
 import java.util.StringTokenizer;
 
 public class TimeService {
@@ -62,6 +64,9 @@ public class TimeService {
             if (tenMin > 0){
                 arr[3][5] = ANSI_PURPLE + "십" + ANSI_RESET;
                 if (oneMin == minValue.getMin()){
+                    arr[minValue.getY()][minValue.getX()] = ANSI_PURPLE + minValue.getHangulMin() + ANSI_RESET;
+                }
+                if (tenMin * 10 == minValue.getMin()){
                     arr[minValue.getY()][minValue.getX()] = ANSI_PURPLE + minValue.getHangulMin() + ANSI_RESET;
                 }
             }else {
