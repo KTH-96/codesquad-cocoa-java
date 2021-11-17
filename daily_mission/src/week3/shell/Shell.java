@@ -1,5 +1,7 @@
 package week3.shell;
 
+import week3.shell.hclock.time.TimeService;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -51,6 +53,10 @@ public class Shell {
             case "cp":
                 command.copyFile(fileOrDirectoryName);
                 break;
+            case "hclock":
+                TimeService service = new TimeService();
+                service.run();
+                break;
             case "help":
                 showCommand();
                 break;
@@ -82,6 +88,7 @@ public class Shell {
         System.out.println("nano = 파일 생성");
         System.out.println("rm = 파일 제거");
         System.out.println("cat = 파일 보기");
+        System.out.println("hclock = 한글 시계 보여주기");
         System.out.println("help = 명령어 보여주기");
     }
 }
