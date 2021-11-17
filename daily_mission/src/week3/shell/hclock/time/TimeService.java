@@ -1,4 +1,4 @@
-package week3.shell.hclock.service;
+package week3.shell.hclock.time;
 public class TimeService {
     String[][] arr = {{"한","두","셋","넷","다","섯"},
                     {"여","섯","일","곱","여","덟"},

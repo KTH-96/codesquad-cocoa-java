@@ -1,4 +1,4 @@
-package week3.shell.hclock.entity;
+package week3.shell.hclock.time;
 
 public class Time {
     private String hour;
