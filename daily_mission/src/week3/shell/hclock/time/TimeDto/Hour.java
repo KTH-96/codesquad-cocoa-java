@@ -1,4 +1,4 @@
-package week3.shell.hclock.time;
+package week3.shell.hclock.time.TimeDto;
 
 public enum Hour {
     H1(1,"한", 0, 0),

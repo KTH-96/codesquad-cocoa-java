@@ -1,4 +1,4 @@
-package week3.shell.hclock.time;
+package week3.shell.hclock.time.TimeDto;
 
 public enum Min {
     M1(1,"일", 4, 1),
@@ -10,7 +10,11 @@ public enum Min {
     M7(7,"칠", 5, 2),
     M8(8,"팔", 5, 3),
     M9(9,"구", 5, 4),
-    M10(10,"십", 3, 5);
+    M10(10,"십", 3, 5),
+    M20(20,"이",3,1),
+    M30(30,"삼",3,2),
+    M40(40,"사",3,3),
+    M50(50, "오", 3, 4);
 
     private final int min;
     private final String hangulMin;
