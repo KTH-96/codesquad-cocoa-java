@@ -1,27 +1,19 @@
 package week3.shell.hclock.time;
 
 public class Time {
-    private String hour;
-    private String min;
+    private int hour;
+    private int min;
 
-    public Time(String hour, String min) {
+    public Time(int hour, int min) {
         this.hour = hour;
         this.min = min;
     }
 
-    public String getHour() {
+    public int getHour() {
         return hour;
     }
 
-    public void setHour(String hour) {
-        this.hour = hour;
-    }
-
-    public String getMin() {
+    public int getMin() {
         return min;
-    }
-
-    public void setMin(String min) {
-        this.min = min;
     }
 }
