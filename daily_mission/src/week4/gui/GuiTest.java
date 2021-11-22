@@ -61,21 +61,55 @@ public class GuiTest {
 //        p.add(button);//버튼을 panel에 포함
 //        f.add(p);//panel를 frame에 포함
 
-        Dialog info = new Dialog(f, "Information", true);
-        info.setSize(140, 90);
-        info.setLocation(50, 50);//parent frame이 아닌, 화면기준 위치
-        info.setLayout(new FlowLayout());
+//        Dialog info = new Dialog(f, "Information", true);
+//        info.setSize(140, 90);
+//        info.setLocation(50, 50);//parent frame이 아닌, 화면기준 위치
+//        info.setLayout(new FlowLayout());
+//
+//        Label msg = new Label("This is modal Dialog", Label.CENTER);
+//        Button ok = new Button("Ok");
+//        ok.addActionListener(new ActionListener() {
+//            @Override
+//            public void actionPerformed(ActionEvent e) {
+//                info.dispose();//Dialog를 메모리에서 삭제
+//            }
+//        });
+//        f.setVisible(ture);
+//        info.setVisible(true);
 
-        Label msg = new Label("This is modal Dialog", Label.CENTER);
-        Button ok = new Button("Ok");
-        ok.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                info.dispose();//Dialog를 메모리에서 삭제
-            }
-        });
+//        MenuBar mb = new MenuBar();
+//        Menu mFile = new Menu("File");
+//
+//        MenuItem miNew = new MenuItem("New");
+//        MenuItem miOpen = new MenuItem("Open");
+//        Menu mOthers = new Menu("Others");
+//        MenuItem miExit = new MenuItem("Exit");
+//
+//        mFile.add(miNew);
+//        mFile.add(miOpen);
+//        mFile.add(mOthers);
+//        mFile.addSeparator();//메뉴 분리선 넣는다.
+//        mFile.add(miExit);
+//
+//        MenuItem miPrint = new MenuItem("Print.....");
+//        MenuItem miPreview = new MenuItem("Print Preview");
+//        MenuItem miSetup = new MenuItem("Print Setup....");
+//        mOthers.add(miPrint);
+//        mOthers.add(miPreview);
+//        mOthers.add(miSetup);
+//
+//        Menu mEdit = new Menu("Edit");
+//        Menu mView = new Menu("View");
+//        Menu mHelp = new Menu("Help");
+//        CheckboxMenuItem miStatusbar = new CheckboxMenuItem("Statusbar");
+//        mView.add(miStatusbar);
+//        mb.add(mFile); // MenuBar에 Menu를 추가한다.
+//        mb.add(mEdit);
+//        mb.add(mView);
+//        mb.setHelpMenu(mHelp); // mHelp를 HelpMenu로 지정한다.
 
 //        f.add(b); frame에 집어넣기
+
         f.setLocation(screenSize.width / 2 - 150, screenSize.height / 2 - 150);//화면크기의 절반값에서 Frame 이 화면 가운데 위치
         f.setVisible(true);
     }
