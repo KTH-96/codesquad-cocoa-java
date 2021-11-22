@@ -3,6 +3,8 @@ package week4.gui;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.WindowEvent;
+import java.awt.event.WindowListener;
 
 public class GuiTest {
     public static void main(String[] args) {
@@ -14,10 +16,10 @@ public class GuiTest {
         Toolkit tk = Toolkit.getDefaultToolkit();
         Dimension screenSize = tk.getScreenSize();//화면 크기 구하기
 
-//        Button b = new Button("확인");
-//        b.setSize(100, 50);
-//        b.setLocation(100, 75);//Frame 내에서 Button위치 설정.
-
+        Button b = new Button("확인");
+        b.setSize(100, 50);
+        b.setLocation(100, 75);//Frame 내에서 Button위치 설정.
+        f.add(b);
 //        Choice day = new Choice();
 //        day.add("SUN");
 //        day.add("MON");
@@ -111,6 +113,46 @@ public class GuiTest {
 //        f.add(b); frame에 집어넣기
 
         f.setLocation(screenSize.width / 2 - 150, screenSize.height / 2 - 150);//화면크기의 절반값에서 Frame 이 화면 가운데 위치
+        f.addWindowListener(new EventHandler());
         f.setVisible(true);
+    }
+
+    private static class EventHandler implements WindowListener {
+        @Override
+        public void windowOpened(WindowEvent e) {
+
+        }
+
+        @Override
+        public void windowClosing(WindowEvent e) {
+            e.getWindow().setVisible(false);
+            e.getWindow().dispose();
+            System.exit(0);
+        }
+
+        @Override
+        public void windowClosed(WindowEvent e) {
+
+        }
+
+        @Override
+        public void windowIconified(WindowEvent e) {
+
+        }
+
+        @Override
+        public void windowDeiconified(WindowEvent e) {
+
+        }
+
+        @Override
+        public void windowActivated(WindowEvent e) {
+
+        }
+
+        @Override
+        public void windowDeactivated(WindowEvent e) {
+
+        }
     }
 }
