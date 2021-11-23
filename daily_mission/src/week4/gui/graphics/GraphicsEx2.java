@@ -27,6 +27,10 @@ public class GraphicsEx2 extends Frame implements MouseMotionListener {
         setVisible(true);
     }
 
+    public void update(Graphics graphics) {
+        paint(graphics);
+    }
+
     public void paint(Graphics graphics) {
         graphics.drawString("마우스를 움직여 보세요", 10, 50);
         graphics.drawString("*", x, y);
