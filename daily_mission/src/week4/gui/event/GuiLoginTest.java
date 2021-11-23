@@ -51,7 +51,7 @@ public class GuiLoginTest extends Frame {
     }
     class EventHandler implements ActionListener {
 
-        @Override
+        @Override//이게 핸들러구나
         public void actionPerformed(ActionEvent e) {
             String id = tfId.getText();
             String password = tfPwd.getText();
