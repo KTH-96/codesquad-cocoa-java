@@ -1,4 +1,4 @@
-package week4.gui;
+package week4.gui.event;
 
 import java.awt.*;
 import java.awt.event.WindowEvent;
