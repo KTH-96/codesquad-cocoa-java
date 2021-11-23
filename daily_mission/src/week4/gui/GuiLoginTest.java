@@ -20,7 +20,7 @@ public class GuiLoginTest extends Frame {
 
     private GuiLoginTest(String title) {
 //        super(title); //Frame(String title)을 호출한다.
-//        그냥 매개변수로 받은 title 쓰면 안되나?
+//        그냥 매개변수로 받은 title 쓰면 안되나? 안써도 실행되는데
         lid = new Label("ID :", Label.RIGHT); // Label의 text 정렬을 오른쪽으로
         lpwd = new Label("Password :", Label.RIGHT);
 
@@ -62,6 +62,8 @@ public class GuiLoginTest extends Frame {
                 tfId.selectAll();//tfId에 입력된 text가 선택되게 한다.
             } else if (!password.equals("asdf")) {
                 System.out.println("입력하신 password가 유효하지 않습니다. 다시 입력해 주세여");
+            } else{
+                System.out.println("성공적인 로그인");
             }
         }
     }
