@@ -1,20 +1,15 @@
 package week4.gui.paintboard;
 
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.WindowAdapter;
-import java.awt.event.WindowEvent;
+import java.awt.event.*;
 
 public class GuiEvent extends Frame {
-    int startX = 0;
-    int startY = 0;
-    int endX = 0;
-    int endY = 0;
+    Point startP,endP;
+
     public static void main(String[] args) {
         GuiEvent guiEvent = new GuiEvent("Paint");
-        guiEvent.makePanel();
         guiEvent.makeCanvas();
+        guiEvent.makePanel();
     }
 
     private void makeCanvas() {
@@ -34,7 +29,8 @@ public class GuiEvent extends Frame {
         line.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                System.out.println("hello");
+                System.out.println("=========라인 버튼 클릭");
+                drawingLine();
             }
         });
         line.setBounds(0, 0, 50, 50);
@@ -61,6 +57,24 @@ public class GuiEvent extends Frame {
         panel.add(ark);
         panel.add(circle);
         add(panel);
+    }
+
+    private void drawingLine() {
+        System.out.println("=======드로우 라인");
+        addMouseListener(new MouseAdapter() {
+            @Override
+            public void mousePressed(MouseEvent e) {
+                startP = e.getPoint();
+            }
+
+            @Override
+            public void mouseReleased(MouseEvent e) {
+                endP = e.getPoint();
+                Graphics graphics = getGraphics();
+                graphics.drawLine(startP.x, startP.y, endP.x, endP.y);
+            }
+        });
+
     }
 
     public GuiEvent(String title) {
