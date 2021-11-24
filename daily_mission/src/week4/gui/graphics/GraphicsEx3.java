@@ -37,20 +37,18 @@ public class GraphicsEx3 extends Frame implements MouseMotionListener {
         repaint();
     }
     public void paint(Graphics g){
-        if (img != null) {
-            g.drawImage(img, 0, 0, this);//가상화면에 그려진 이미지 복사
-        }
+        if (img == null) return;
+        g.drawImage(img, 0, 0, this);//가상화면에 그려진 이미지 복사
     }
 
 
     @Override
     public void mouseDragged(MouseEvent e) {
-        if (e.getModifiersEx() == MouseEvent.BUTTON1_DOWN_MASK) {
-            x = e.getX();
-            y = e.getY();
-            gImg.drawString("*", x, y);
-            repaint();
-        }
+        if (e.getModifiersEx() != MouseEvent.BUTTON1_DOWN_MASK) return;
+        gImg.drawLine(x, y, e.getX(), e.getY());
+        x = e.getX();
+        y = e.getY();
+        repaint();
 
     }
 
