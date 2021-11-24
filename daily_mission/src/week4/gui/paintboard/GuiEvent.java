@@ -8,7 +8,7 @@ public class GuiEvent extends Frame {
 
     public static void main(String[] args) {
         GuiEvent guiEvent = new GuiEvent("Paint");
-        guiEvent.makeCanvas();
+//        guiEvent.makeCanvas();
         guiEvent.makePanel();
     }
 
@@ -39,7 +39,8 @@ public class GuiEvent extends Frame {
         ark.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                System.out.println("hello!!");
+                System.out.println("=========곡선 버튼 클릭");
+                drawingArk();
             }
         });
         ark.setBounds(55, 0, 50, 50);
@@ -48,7 +49,8 @@ public class GuiEvent extends Frame {
         circle.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                System.out.println("hello!!");
+                System.out.println("=========원 버튼 클릭");
+                drawingCircle();
             }
         });
         circle.setBounds(110, 0, 50, 50);
@@ -57,6 +59,40 @@ public class GuiEvent extends Frame {
         panel.add(ark);
         panel.add(circle);
         add(panel);
+    }
+
+    private void drawingCircle() {
+        System.out.println("========드로우 원");
+        addMouseListener(new MouseAdapter() {
+            @Override
+            public void mousePressed(MouseEvent e) {
+                startP = e.getPoint();
+            }
+
+            @Override
+            public void mouseReleased(MouseEvent e) {
+                endP = e.getPoint();
+                Graphics graphics = getGraphics();
+                graphics.drawOval(startP.x, startP.y, endP.x, endP.y);
+            }
+        });
+    }
+
+    private void drawingArk() {
+        System.out.println("========드로우 곡선");
+        addMouseListener(new MouseAdapter() {
+            @Override
+            public void mousePressed(MouseEvent e) {
+                startP = e.getPoint();
+            }
+
+            @Override
+            public void mouseReleased(MouseEvent e) {
+                endP = e.getPoint();
+                Graphics graphics = getGraphics();
+                graphics.drawArc(startP.x, startP.y, endP.x, endP.y, 30,30);
+            }
+        });
     }
 
     private void drawingLine() {
