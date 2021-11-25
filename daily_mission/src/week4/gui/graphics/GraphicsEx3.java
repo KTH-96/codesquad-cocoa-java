@@ -33,7 +33,7 @@ public class GraphicsEx3 extends Frame implements MouseMotionListener {
 
         img = createImage(500, 500);
         gImg = img.getGraphics();
-        gImg.drawString("왼쪽마우스를 누른채 움직여보세요", 10, 50);
+        gImg.drawString("왼쪽마우스를 누른채 움직여보세요", getX(), getY());
         repaint();
     }
     public void paint(Graphics g){
@@ -54,6 +54,8 @@ public class GraphicsEx3 extends Frame implements MouseMotionListener {
 
     @Override
     public void mouseMoved(MouseEvent e) {
-
+        x = getX();
+        y = getY();
+        repaint();
     }
 }
