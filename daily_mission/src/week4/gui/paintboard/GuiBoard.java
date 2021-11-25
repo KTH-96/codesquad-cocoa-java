@@ -4,6 +4,6 @@ import java.awt.*;
 
 public class GuiBoard {
     public static void main(String[] args) {
-        new GuiEvent("paintBoard");
+        new MakeFrame("그림판");
     }
 }
