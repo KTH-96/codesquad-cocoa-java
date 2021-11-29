@@ -1,44 +1,72 @@
 package step1;
 
-import java.util.Scanner;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.StringTokenizer;
 
 public class WordService {
-    private Scanner sc = new Scanner(System.in);
     private Word wordEdit;
+    private String word;
+    private int  moveNum;
+    private String LR;
 
     public void run() {
         getWord();
-
+        System.out.println("======= " + wordEdit.getWord());
+        System.out.println("======= " + wordEdit.getMove());
+        System.out.println("======= " + wordEdit.getLR());
     }
 
     //todo: 단어 입력하기
     private void getWord() {
         System.out.println("단어 이동수 방향 ex) apple 3 L");
         System.out.print("> ");
-        String word = sc.next();
-        int moveNum = sc.nextInt();
-        String LR = sc.next();
-        LR.toLowerCase();
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        try {
+            StringTokenizer st = new StringTokenizer(br.readLine(), " ");
+            word = st.nextToken();
+            moveNum = Integer.parseInt(st.nextToken());
+            LR = st.nextToken();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
         boolean valid = wordCheck(word, moveNum, LR);
-        while (valid){
+        if (valid == false) {
             getWord();
         }
 
         wordEdit = new Word(word, moveNum, LR);
     }
-    //todo: 단어 조건에 맞는지 체크하
+    //todo: 단어 조건에 맞는지 체크하기
     private boolean wordCheck(String word, int moveNum, String LR) {
-        if (word.split(" ").length >= 1){
-            System.out.println("띄워쓰기 들어가면 인식 못합니다 ㅠㅠ");
+        if (checkWord(word)) return false;
+        if (checkLR(LR)) return false;
+        if (moveNumCheck(moveNum)) return false;
+
+        return true;
+    }
+
+    private boolean checkLR(String lr) {
+        if (lr.equalsIgnoreCase("l") || lr.equalsIgnoreCase("r")) {
+            return false;
+        }else {
             return true;
         }
+    }
+
+    private boolean moveNumCheck(int moveNum) {
         if (moveNum >= 100 || moveNum < -100) {
             System.out.println("범위는 100 이하 -100 이하입니당");
             return true;
         }
-        if (!LR.equals("l") || !LR.equals("r")) {
-            System.out.println("L또는 R만 인식 가능합니다르");
+        return false;
+    }
+
+    private boolean checkWord(String word) {
+        if (word.contains(" ")){
+            System.out.println("단어에 띄어쓰기 하면 다시 해야합니당");
             return true;
         }
         return false;

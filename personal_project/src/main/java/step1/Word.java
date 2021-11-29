@@ -2,7 +2,7 @@ package step1;
 
 public class Word {
     private String word;
-    private int move;
+    private int  move;
     private String LR;
 
     public Word(String word, int move, String LR) {
