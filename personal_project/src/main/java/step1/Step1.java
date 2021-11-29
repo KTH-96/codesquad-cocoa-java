@@ -2,10 +2,8 @@ package step1;
 
 public class Step1 {
     public static void main(String[] args) {
-        new Step1().run();
+        WordCheck wordService = new WordCheck();
+        wordService.run();
     }
 
-    private void run() {
-
-    }
 }
