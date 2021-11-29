@@ -6,7 +6,6 @@ import java.io.InputStreamReader;
 import java.util.StringTokenizer;
 
 public class WordCheck {
-    private Word wordEdit;
     private String word;
     private int  moveNum;
     private String LR;
@@ -14,7 +13,7 @@ public class WordCheck {
     public void run() {
         getWord();
         WordEdit wordEdit = new WordEdit();
-        wordEdit.edit();
+        wordEdit.edit(word, moveNum, LR);
     }
 
     //todo: 단어 입력하기
@@ -31,11 +30,12 @@ public class WordCheck {
             e.printStackTrace();
         }
 
+
         boolean valid = wordCheck(word, moveNum, LR);
         if (valid == false) {
             getWord();
         }
-        wordEdit = new Word(word, moveNum, LR);
+
     }
     //todo: 단어 조건에 맞는지 체크하기
     private boolean wordCheck(String word, int moveNum, String LR) {
