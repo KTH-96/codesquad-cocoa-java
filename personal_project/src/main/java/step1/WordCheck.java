@@ -5,7 +5,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.StringTokenizer;
 
-public class WordService {
+public class WordCheck {
     private Word wordEdit;
     private String word;
     private int  moveNum;
@@ -13,9 +13,8 @@ public class WordService {
 
     public void run() {
         getWord();
-        System.out.println("======= " + wordEdit.getWord());
-        System.out.println("======= " + wordEdit.getMove());
-        System.out.println("======= " + wordEdit.getLR());
+        WordEdit wordEdit = new WordEdit();
+        wordEdit.edit();
     }
 
     //todo: 단어 입력하기
@@ -36,7 +35,6 @@ public class WordService {
         if (valid == false) {
             getWord();
         }
-
         wordEdit = new Word(word, moveNum, LR);
     }
     //todo: 단어 조건에 맞는지 체크하기
