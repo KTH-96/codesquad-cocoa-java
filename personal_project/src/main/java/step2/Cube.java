@@ -60,14 +60,13 @@ public class Cube {
                     moveBottomLeft(dummyCube);
                     break;
                 case "q":
-                    System.out.println("Bye~");
+                    System.out.print("Bye~");
                     System.exit(0);
                     break;
             }
             printCube(commandArr.get(i));
         }
-        System.out.println();
-        start();
+        programStart();
     }
 
     private String[][] getDummyCube() {
@@ -88,6 +87,7 @@ public class Cube {
             }
             System.out.println();
         }
+        System.out.println();
     }
 
     private List<String> getCube() {
@@ -119,24 +119,45 @@ public class Cube {
 
     //todo: 가장 아래줄을 왼쪽으로 한칸 밀기
     private void moveBottomLeft(String[][] dummyCube) {
+        cube[2][0] = dummyCube[2][2];
+        cube[2][1] = dummyCube[2][0];
+        cube[2][2] = dummyCube[2][1];
     }
     //todo: 가장 아래줄을 오른쪽으로 한칸 밀기
     private void moveBottomRight(String[][] dummyCube) {
+        cube[2][0] = dummyCube[2][1];
+        cube[2][1] = dummyCube[2][2];
+        cube[2][2] = dummyCube[2][0];
     }
     //todo: 가장 왼쪽줄을 위로 한칸 밀기
     private void moveLeftTop(String[][] dummyCube) {
+        cube[0][0] = dummyCube[2][0];
+        cube[1][0] = dummyCube[0][0];
+        cube[2][0] = dummyCube[1][0];
     }
     //todo:가장 왼쪽줄을 아래로 한칸 밀기
     private void moveLeftBottom(String[][] dummyCube) {
+        cube[1][0] = dummyCube[0][0];
+        cube[2][0] = dummyCube[1][0];
+        cube[0][0] = dummyCube[2][0];
     }
     //todo: 가장 오른쪽줄을 아래로 한칸 밀기
     private void moveRightBottom(String[][] dummyCube) {
+        cube[1][2] = dummyCube[0][2];
+        cube[2][2] = dummyCube[1][2];
+        cube[0][2] = dummyCube[2][2];
     }
     //todo: 가장 오른쪽줄을 위로 한칸 밀기
     private void moveRightTop(String[][] dummyCube) {
+        cube[2][2] = dummyCube[0][2];
+        cube[1][2] = dummyCube[2][2];
+        cube[0][2] = dummyCube[1][2];
     }
     //todo: 가장 윗줄을 오른쪽으로 한칸 밀기
     private void moveTopRight(String[][] dummyCube) {
+        cube[0][0] = dummyCube[0][2];
+        cube[0][1] = dummyCube[0][0];
+        cube[0][2] = dummyCube[0][1];
     }
     //todo: 가장 윗줄을 왼쪽으로 한 칸 밀기
     private void moveTopLeft(String[][] dummyCube) {
