@@ -8,9 +8,17 @@ import java.util.List;
 
 public class Cube {
     String[][] cube = new String[3][3];
-
-    public boolean Start() {
+    public void start() {
         firstCube();
+        programStart();
+    }
+
+    private void firstCube() {
+        String[][] firstCube = {{"R", "R", "W"},
+                {"G", "C", "W"},
+                {"G", "B", "B"}};
+
+        cube = firstCube;
 
         for (String[] strings : cube) {
             for (String string : strings) {
@@ -18,17 +26,71 @@ public class Cube {
             }
             System.out.println();
         }
-        return programStart();
     }
 
-    private void firstCube() {
-        String[][] firstCube = {{"R", "R", "W"},
-                {"G", "C", "W"},
-                {"G", "B", "B"}};
-        cube = firstCube;
+    private void programStart() {
+
+        List<String> commandArr = getCube();
+
+        for (int i = 0; i < commandArr.size(); i++) {
+            String[][] dummyCube = getDummyCube();
+            switch (commandArr.get(i)) {
+                case "u":
+                    moveTopLeft(dummyCube);
+                    break;
+                case "u`":
+                    moveTopRight(dummyCube);
+                    break;
+                case "r":
+                    moveRightTop(dummyCube);
+                    break;
+                case "r`":
+                    moveRightBottom(dummyCube);
+                    break;
+                case "l":
+                    moveLeftBottom(dummyCube);
+                    break;
+                case "l`":
+                    moveLeftTop(dummyCube);
+                    break;
+                case "b":
+                    moveBottomRight(dummyCube);
+                    break;
+                case "b`":
+                    moveBottomLeft(dummyCube);
+                    break;
+                case "q":
+                    System.out.println("Bye~");
+                    System.exit(0);
+                    break;
+            }
+            printCube(commandArr.get(i));
+        }
+        System.out.println();
+        start();
     }
 
-    private boolean programStart() {
+    private String[][] getDummyCube() {
+        String[][] dummyCube = new String[3][3];
+        for (int i = 0; i < 3; i++) {
+            for (int j = 0; j < 3; j++) {
+                dummyCube[i][j] = cube[i][j];
+            }
+        }
+        return dummyCube;
+    }
+
+    private void printCube(String command) {
+        System.out.println(command);
+        for (String[] strings : cube) {
+            for (String string : strings) {
+                System.out.print(string + " ");
+            }
+            System.out.println();
+        }
+    }
+
+    private List<String> getCube() {
         System.out.print("CUBE> ");
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         String command = "";
@@ -52,68 +114,35 @@ public class Cube {
             }
             commandArr.add(splitCommand[i]);
         }
-
-        for (int i = 0; i < commandArr.size(); i++) {
-            switch (commandArr.get(i)) {
-                case "u":
-                    moveTopLeft();
-                    break;
-                case "u`":
-                    moveTopRight();
-                    break;
-                case "r":
-                    moveRightTop();
-                    break;
-                case "r`":
-                    moveRightBottom();
-                    break;
-                case "l":
-                    moveLeftBottom();
-                    break;
-                case "l`":
-                    moveLeftTop();
-                    break;
-                case "b":
-                    moveBottomRight();
-                    break;
-                case "b`":
-                    moveBottomLeft();
-                    break;
-                case "q":
-                    System.out.println("Bye~");
-                    return false;
-            }
-        }
-        return true;
+        return commandArr;
     }
+
     //todo: 가장 아래줄을 왼쪽으로 한칸 밀기
-    private void moveBottomLeft() {
+    private void moveBottomLeft(String[][] dummyCube) {
     }
     //todo: 가장 아래줄을 오른쪽으로 한칸 밀기
-    private void moveBottomRight() {
+    private void moveBottomRight(String[][] dummyCube) {
     }
     //todo: 가장 왼쪽줄을 위로 한칸 밀기
-    private void moveLeftTop() {
+    private void moveLeftTop(String[][] dummyCube) {
     }
     //todo:가장 왼쪽줄을 아래로 한칸 밀기
-    private void moveLeftBottom() {
+    private void moveLeftBottom(String[][] dummyCube) {
     }
     //todo: 가장 오른쪽줄을 아래로 한칸 밀기
-    private void moveRightBottom() {
+    private void moveRightBottom(String[][] dummyCube) {
     }
     //todo: 가장 오른쪽줄을 위로 한칸 밀기
-    private void moveRightTop() {
+    private void moveRightTop(String[][] dummyCube) {
     }
     //todo: 가장 윗줄을 오른쪽으로 한칸 밀기
-    private void moveTopRight() {
+    private void moveTopRight(String[][] dummyCube) {
     }
     //todo: 가장 윗줄을 왼쪽으로 한 칸 밀기
-    private void moveTopLeft() {
-
+    private void moveTopLeft(String[][] dummyCube) {
+        cube[0][0] = dummyCube[0][1];
+        cube[0][1] = dummyCube[0][2];
+        cube[0][2] = dummyCube[0][0];
     }
 
-    private String[][] copyCube(){
-        String[][] dummyCube = cube;
-        return dummyCube;
-    }
 }
